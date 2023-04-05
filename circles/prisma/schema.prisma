@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Groups {
+  id           Int            @id @default(autoincrement())
+  club_name    String         @unique
+  days         String
+  times        String
+  image        String?
+  tagline      String
+  description  String
+  location     String
+  availability String
+  email        String
+  telephone    String
+  image_alt    String         @default("alt image")
+  events       Events[]
+  user_circles User_circles[]
+}
+
+model Events {
+  id         Int      @id @default(autoincrement())
+  event_name String
+  date       String
+  club_name  String
+  running    Boolean  @default(true)
+  end_time   DateTime
+  location   String   @default("location")
+  start_time DateTime
+  groups     Groups   @relation(fields: [club_name], references: [club_name])
+}
+
+model Users {
+  id             Int            @id @default(autoincrement())
+  first_name     String
+  surname        String
+  email          String
+  telephone      String
+  role           String
+  link_worker_id Int 
+  feedback       Feedback[]
+  user_circles   User_circles[]
+  link_worker    LinkWorkers    @relation(fields: [link_worker_id], references: [id])
+}
+
+model LinkWorkers {
+  id         Int     @id @default(autoincrement())
+  first_name String
+  surname    String
+  email      String
+  telephone  String
+  Users      Users[]
+}
+
+model Feedback {
+  id         Int    @id @default(autoincrement())
+  user_id    Int
+  event_name String
+  comment    String
+  rating     Int
+  user       Users  @relation(fields: [user_id], references: [id])
+}
+
+model User_circles {
+  id        Int    @id @default(autoincrement())
+  user_id   Int
+  club_name String
+  groups    Groups @relation(fields: [club_name], references: [club_name])
+  user      Users  @relation(fields: [user_id], references: [id])
+}

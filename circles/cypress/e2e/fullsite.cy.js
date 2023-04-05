@@ -1,0 +1,45 @@
+it("Full e2e", function () {
+  cy.visit("https://circlesapp.netlify.app/");
+  // cy.get(".lg\\:top-64 > .lg\\:text-lg > .underline").click();
+  cy.get(".mt-12 > :nth-child(1) > .text-gray-900").clear("M");
+  cy.get(".mt-12 > :nth-child(1) > .text-gray-900").type("Matt");
+  cy.get(".mt-12 > .md\\:ml-6 > .text-gray-900").clear();
+  cy.get(".mt-12 > .md\\:ml-6 > .text-gray-900").type("Matt");
+  cy.get(".md\\:flex.mt-8 > :nth-child(1) > .text-gray-900").clear();
+  cy.get(".md\\:flex.mt-8 > :nth-child(1) > .text-gray-900").type(
+    "matt@matt.com"
+  );
+  cy.get(".md\\:flex.mt-8 > .md\\:ml-6 > .text-gray-900").clear("1");
+  cy.get(".md\\:flex.mt-8 > .md\\:ml-6 > .text-gray-900").type("123456789");
+  cy.get(".h-36").click();
+  cy.get(".mt-9").click();
+  cy.get(".hidden > :nth-child(1) > a").click();
+  cy.get(".hidden > :nth-child(4) > button").click();
+  cy.get("form").click();
+  cy.get("#input-username-for-credentials-provider").clear("johndoe@text.com");
+  cy.get("#input-username-for-credentials-provider").type("johndoe@test.com");
+  cy.get("#input-password-for-credentials-provider").clear();
+  cy.get("#input-password-for-credentials-provider").type("test");
+  cy.get("button").click();
+  cy.get('[data-cy="groups"] > a').click();
+  cy.get('[data-test="search-input"]').clear();
+  cy.get('[data-test="search-input"]').type("Swimming");
+  cy.get(".mb-1 > .flex-grow > :nth-child(4)").click();
+  cy.get(":nth-child(4) > .-mt-px > .-ml-px > .relative > .h-5").click();
+  cy.get(".fixed").click();
+  cy.get(".sc-dkrFOg > svg").click();
+  cy.get(".hidden > :nth-child(2) > a").click();
+  cy.get(".border-\\[rgba\\(186\\,229\\,243\\)\\]").click();
+  cy.get(".react-datepicker__day--026").click();
+  cy.get(".border-\\[rgba\\(186\\,229\\,243\\)\\]").click();
+  cy.get(".react-datepicker__day--024").click();
+  cy.get(".justify-start > :nth-child(2)").click();
+  cy.get(".justify-start > :nth-child(3)").click();
+  cy.get(".lg\\:flex-row-reverse > .justify-start").click();
+  cy.get(".hidden > :nth-child(2) > a").click();
+  cy.get(":nth-child(2) > :nth-child(3) > a").click();
+  cy.get('[data-cy="help"] > a').click();
+  cy.get(".underline").click();
+  cy.get(".pl-10 > :nth-child(2) > :nth-child(5)").click();
+  cy.get(":nth-child(2) > :nth-child(5) > button").click();
+});
